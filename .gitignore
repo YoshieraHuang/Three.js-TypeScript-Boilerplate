@@ -1,1 +1,6 @@
 node_modules
+dist
+!dist/client/index.html
+!dist/client/favicon.ico
+!dist/server/models
+yarn.lock
