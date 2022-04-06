@@ -13,6 +13,7 @@ window.addEventListener('resize', resizeCanvas, false);
 
 const socket: SocketIOClient.Socket = io()
 socket.on("connect", () => {
+    socket.emit("loadScene", { url: "models/GD-line-02.FBX"})
     setInterval(() => {
         socket.emit("clientTimestamp", Date.now())
     }, 1000)

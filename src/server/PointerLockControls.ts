@@ -41,8 +41,6 @@ class PointerLockControls extends EventDispatcher {
 
 		this.euler.x = Math.max( _PI_2 - this.maxPolarAngle, Math.min( _PI_2 - this.minPolarAngle, this.euler.x ) );
 
-		console.log(this.euler);
-
 		this.camera.quaternion.setFromEuler( this.euler );
 	}
 
@@ -57,11 +55,8 @@ class PointerLockControls extends EventDispatcher {
 	}
 
 	onPointerlockError = () => {
-
 		console.error( 'THREE.PointerLockControls: Unable to use Pointer Lock API' );
-
-		this.disconnect()
-
+		this.disconnect();
 	}
 
 	public connect() {
@@ -140,6 +135,10 @@ class PointerLockControls extends EventDispatcher {
 		this.moveUp({ distance: -distance});
 	};
 
+	public reset = (position: Vector3) => {
+		this.camera.position.set(position.x, position.y, position.z);
+		this.camera.quaternion.setFromEuler(new Euler(0, 0, 0, "YXZ"));
+	}
 	// public lock() {
 	// 		this.domElement.requestPointerLock();
 	// 	};
